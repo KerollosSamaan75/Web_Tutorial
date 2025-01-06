@@ -1,0 +1,74 @@
+/* Custom CSS for Shopping Website */
+
+/* Navbar styles */
+.navbar {
+    background-color: #f8f9fa;
+}
+
+.navbar-nav .nav-link {
+    color: #000;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+/* Jumbotron styles */
+.jumbotron {
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+}
+
+.jumbotron .display-4 {
+    font-weight: bold;
+}
+
+/* Card styles */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #555;
+}
+
+/* Footer styles */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    font-size: 0.875rem;
+}
+
+/* Responsive navbar colors */
+@media (max-width: 768px) {
+    .navbar {
+        background-color: #e9ecef;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        background-color: #dee2e6;
+    }
+}
+
+/* Responsive layout for cards */
+@media (max-width: 400px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
