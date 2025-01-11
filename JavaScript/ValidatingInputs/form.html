@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label,
+        input,
+        button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Form with Validation</h1>
+    <form id="myForm">
+        <!-- Input Fields with IDs -->
+        <label for="title">Title:</label>
+        <input id="title" type="text" class="form-control" />
+
+        <label for="firstName">First Name:</label>
+        <input id="firstName" type="text" class="form-control" />
+
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" type="text" class="form-control" />
+
+        <label for="email">Email:</label>
+        <input id="email" type="email" class="form-control" />
+
+        <!-- Submit Button -->
+        <button type="button" onclick="validateInputs()">Submit</button>
+    </form>
+
+    <script>
+        // JavaScript function to validate inputs
+        function validateInputs() {
+            const title = document.getElementById("title").value.trim();
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (!title) {
+                alert("Title is empty");
+                return;
+            }
+            if (!firstName) {
+                alert("First Name is empty");
+                return;
+            }
+            if (!lastName) {
+                alert("Last Name is empty");
+                return;
+            }
+            if (!email) {
+                alert("Email is empty");
+                return;
+            }
+
+            alert("All fields are filled!");
+        }
+    </script>
+</body>
+
+</html>
