@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        input,
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Enter Your Name</h1>
+    <!-- Input field for type text -->
+    <input type="text" id="name" placeholder="Enter your name here">
+
+    <!-- Button (already present in Module 4 HTML) -->
+    <button onclick="showMessage()">Submit</button>
+
+    <script>
+        // Function to get the input value and display a message
+        function showMessage() {
+            const name = document.getElementById("name").value; // Get input value
+            const message = `Hello, ${name}! Welcome to Module 5!`; // Concatenate message
+            alert(message); // Show message in alert
+        }
+    </script>
+</body>
+
+</html>
