@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label,
+        input,
+        select,
+        button {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Order Your Coffee</h1>
+    <form id="cafeForm">
+        <!-- Customer Name -->
+        <label for="customerName">Name:</label>
+        <input type="text" id="customerName" name="customerName" required>
+
+        <!-- Coffee Type -->
+        <fieldset>
+            <legend>Which coffee do you want to order?</legend>
+            <label><input type="radio" name="coffeeType" value="Turkish coffee|3" required> Turkish coffee $3</label>
+            <label><input type="radio" name="coffeeType" value="American coffee|5"> American coffee $5</label>
+            <label><input type="radio" name="coffeeType" value="Iced latte|7"> Iced latte $7</label>
+        </fieldset>
+
+        <!-- Extras -->
+        <fieldset>
+            <legend>Do you need any extras?</legend>
+            <label><input type="checkbox" name="extras" value="Extra coffee|1.5"> Extra coffee $1.50</label>
+            <label><input type="checkbox" name="extras" value="Whipped cream|2"> Whipped cream $2</label>
+            <label><input type="checkbox" name="extras" value="Caramel|3"> Caramel $3</label>
+        </fieldset>
+
+        <!-- Coffee Size -->
+        <label for="coffeeSize">What size?</label>
+        <select id="coffeeSize" name="coffeeSize" required>
+            <option value="Small|1.5">Small $1.50</option>
+            <option value="Medium|2.5">Medium $2.50</option>
+            <option value="Large|3.5">Large $3.50</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="button" onclick="submitOrder()">Submit Order</button>
+    </form>
+
+    <!-- Order Summary -->
+    <h2>Order Summary</h2>
+    <p id="orderSummary"></p>
+
+    <script>
+        function submitOrder() {
+            const customerName = document.getElementById("customerName").value;
+            const coffeeType = document.querySelector('input[name="coffeeType"]:checked');
+            const extras = document.querySelectorAll('input[name="extras"]:checked');
+            const coffeeSize = document.getElementById("coffeeSize").value;
+
+            // Calculate total price
+            let totalPrice = 0;
+            if (coffeeType) {
+                const [coffee, coffeePrice] = coffeeType.value.split("|");
+                totalPrice += parseFloat(coffeePrice);
+            }
+
+            extras.forEach(extra => {
+                const [, extraPrice] = extra.value.split("|");
+                totalPrice += parseFloat(extraPrice);
+            });
+
+            if (coffeeSize) {
+                const [, sizePrice] = coffeeSize.split("|");
+                totalPrice += parseFloat(sizePrice);
+            }
+
+            // Generate summary message
+            let summary = `Thank you, ${customerName}!<br>`;
+            summary += `You ordered a ${coffeeType ? coffeeType.value.split("|")[0] : ''} with `;
+            summary += extras.length ? Array.from(extras).map(extra => extra.value.split("|")[0]).join(", ") : "no extras";
+            summary += `. Size: ${coffeeSize ? coffeeSize.split("|")[0] : ''}.<br>`;
+            summary += `Total Price: $${totalPrice.toFixed(2)}.`;
+
+            // Display summary
+            document.getElementById("orderSummary").innerHTML = summary;
+        }
+    </script>
+</body>
+
+</html>
