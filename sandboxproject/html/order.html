@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Order</title>
+    <link rel="stylesheet" href="../css/order.css">
+</head>
+
+<body>
+    <header>
+        <h1>Place Your Order</h1>
+    </header>
+    <form id="order-form">
+        <label for="name">Customer Name:</label>
+        <input type="text" id="name" required />
+
+        <p>Which coffee would you like to order?</p>
+        <input type="radio" name="coffee" value="3" /> Turkish Coffee - $3<br />
+        <input type="radio" name="coffee" value="5" /> American Coffee - $5<br />
+        <input type="radio" name="coffee" value="7" /> Iced Latte - $7<br />
+
+        <p>Do you need any extras?</p>
+        <input type="checkbox" value="1.5" /> Extra Coffee - $1.50<br />
+        <input type="checkbox" value="2" /> Whipped Cream - $2<br />
+        <input type="checkbox" value="3" /> Extra Caramel - $3<br />
+
+        <p>What size?</p>
+        <select id="size">
+            <option value="1.5">Small - $1.50</option>
+            <option value="2.5">Medium - $2.50</option>
+            <option value="3.5">Large - $3.50</option>
+        </select><br />
+
+        <button type="button" onclick="submitOrder()">Submit Order</button>
+    </form>
+    <p id="order-summary"></p>
+    <script src="../js/orderService.js"></script>
+    <script src="../js/order.js"></script>
+</body>
+
+</html>
